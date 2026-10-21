@@ -1,0 +1,513 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hyperbolic Studio</title><style>:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#dfe9ec;background:#0c131a;font-size:13px;--muted:#899da7;--line:#27353f;--accent:#75dcc8}*{box-sizing:border-box}body{margin:0}header{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--line);background:#101a23}.brand{display:flex;gap:12px;align-items:center;font-size:25px;color:var(--accent)}.brand span{color:#ecf4f5;font-size:19px;font-weight:600;letter-spacing:-.4px}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:400;margin-top:4px;letter-spacing:.3px}.header-actions{display:flex;gap:8px}button,select,input{font:inherit}button{border:1px solid #344550;background:#182730;color:#dce8ec;border-radius:7px;padding:9px 11px;cursor:pointer}button:hover{background:#253b45;border-color:#6b9296}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}button.active{color:#91eedb;background:#24453f;border-color:#47796e}button.accent{background:#a0e6d6;color:#0d312a;font-weight:600;width:100%}button.subtle{padding:6px;font-size:11px;background:transparent;color:var(--muted)}main{display:grid;grid-template-columns:230px minmax(360px,1fr) 315px;height:calc(100vh - 82px)}aside{overflow-y:auto;padding:22px 18px;background:#111c25}.left{border-right:1px solid var(--line)}.right{border-left:1px solid var(--line)}h2{font-size:15px;font-weight:600;margin:0 0 18px}h3{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#9aafb9;margin:26px 0 12px}label{display:block;color:#acbcc5;font-size:12px;margin:16px 0}select,input[type=search],input[type=text]{display:block;width:100%;margin-top:8px;padding:9px;border:1px solid #344550;border-radius:6px;background:#101a23;color:#dce8ec}input[type=range]{display:block;width:100%;margin-top:12px;accent-color:#83d7c5}input[type=color]{height:22px;width:27px;border:0;background:transparent;padding:0;cursor:pointer}.mini{font-size:10px;color:#8197a1;line-height:1.6}.hint{font-size:12px;line-height:1.7;color:var(--muted)}.layer{display:flex;gap:8px;align-items:center;margin:10px 0;font-size:11px}.layer input[type=checkbox]{accent-color:var(--accent)}.layer span{flex:1}.segmented{display:flex;gap:5px}.segmented button{flex:1;font-size:11px}.workspace{padding:24px 25px 0;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:radial-gradient(ellipse at center,#14242e 0%,#0c151d 70%)}.workspace-title{display:flex;align-items:center;justify-content:space-between;gap:10px}.eyebrow{color:#78b9b3;font-size:10px;letter-spacing:2px;font-weight:600}h1{font-weight:500;letter-spacing:-.7px;font-size:22px;margin:9px 0 0}.pill{border:1px solid #32464e;background:#15262e;border-radius:20px;padding:5px 9px;font-size:10px;color:#a8c8ce;white-space:nowrap}#canvasWrap{position:relative;flex:1;min-height:200px}canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab}.bottom-bar{display:flex;justify-content:space-between;gap:20px;padding:12px 0 18px;font-size:10px;color:#89a5af}.tabs{display:flex;gap:8px;margin-bottom:24px}.tabs button{flex:1;border-radius:6px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section-title h2{margin:0}.sort-row{display:flex;gap:6px;margin-bottom:15px}.sort-row select{font-size:11px}#objectList{max-height:32vh;overflow:auto}.object-row{display:flex;align-items:center;gap:8px;border-bottom:1px solid #22323b;padding:9px 2px}.object-row button{border:0;background:none;padding:0;color:#d9e5e9;text-align:left;overflow-wrap:anywhere}.object-row .object-name{flex:1}.object-row .icon{font-size:17px;width:16px}.object-row .tiny{font-size:11px;color:#8399a4}.group-title{color:#7faaa7;font-size:10px;letter-spacing:1px;margin:15px 0 4px}.pair-fields{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:7px 0}.pair-fields label{margin:0;font-size:10px}.pair-fields select{font-size:11px;padding:7px}.pair-card{margin-top:10px;padding:10px;background:#192831;border:1px solid #30454d;border-radius:6px;font-size:11px;line-height:1.6;overflow-wrap:anywhere}.pair-card button{float:right;padding:0 5px;background:none;border:0}.topo-card{background:#192a33;padding:15px;border:1px solid #36535c;border-radius:8px;line-height:1.6;margin:12px 0}.topo-card.good{border-color:#5b9a83}.topo-card.warn{border-color:#a58248}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.metric{padding:12px;background:#172731;border-radius:5px;color:#93acb6;font-size:11px}.metric strong{display:block;color:#dbefec;font-size:20px;font-weight:500}.angles{font-size:11px;color:#b7cbd0;line-height:1.9}#tooltip,#selection{position:absolute;background:#20323c;border:1px solid #5b7d85;border-radius:8px;box-shadow:0 12px 32px #0007;padding:12px;color:#e8f2f3;z-index:2;max-width:260px}#tooltip{pointer-events:none;font-size:11px}#selection label{margin:5px 0}#selection input{margin:6px 0 10px}#selection .actions{display:flex;gap:5px}#selection p{font-size:11px;color:#a6bdc6;line-height:1.5;margin:0 0 8px}dialog{max-width:720px;max-height:88vh;overflow:auto;background:#15242e;color:#d6e4e9;border:1px solid #4a6d77;border-radius:16px;padding:35px;font-size:13px;line-height:1.85}dialog::backdrop{background:#030b10bb;backdrop-filter:blur(5px)}dialog h2{font-size:26px;margin:10px 0 20px}dialog a{color:#8bdbc9}.close{float:right;font-size:22px;padding:0 8px}#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#29433e;color:#d9fff4;border:1px solid #6a9f91;border-radius:8px;padding:12px 20px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10;max-width:80vw}#toast.show{opacity:1}[hidden]{display:none!important}.empty{padding:16px 0;color:#7f98a4;font-size:12px;line-height:1.7}@media(max-width:1100px){main{grid-template-columns:195px minmax(300px,1fr) 280px}.workspace{padding:18px 10px 0}h1{font-size:18px}aside{padding:18px 12px}}@media(max-width:800px){header{height:auto;min-height:82px;flex-wrap:wrap;gap:12px;padding:15px}.header-actions{flex-wrap:wrap}main{height:auto;grid-template-columns:1fr 1fr}.workspace{grid-column:1/-1;grid-row:1;height:78vh}.left,.right{height:auto;max-height:none}.right{border-left:1px solid var(--line)}.bottom-bar span:last-child{display:none}#objectList{max-height:300px}}
+.identify-actions{display:flex;gap:7px;margin:12px 0 16px}.identify-actions .accent{flex:1}.identify-actions button{font-size:11px}button:disabled{opacity:.4;cursor:default}button:disabled:hover{background:#a0e6d6;border-color:#344550}.vertices-title{margin-top:26px}#identifiedList,#vertexList{max-height:29vh;overflow:auto}.object-row:hover{background:#20363e;border-radius:5px}#namePair{padding:1px 12px 12px;background:#1b343a;border:1px solid #47786e;border-radius:8px;margin-bottom:16px}.sort-row input{min-width:0;flex:1}.sort-row select{width:80px}.section-title h2{font-size:14px}
+
+.view-actions{display:flex;align-items:center;gap:10px}.workspace.expanded{height:100vh;padding:12px 20px 0;grid-column:1;grid-row:1}.workspace:fullscreen{width:100vw;height:100vh}.workspace:-webkit-full-screen{width:100vw;height:100vh}.workspace.expanded .eyebrow,.workspace.expanded h1{display:none}.workspace.expanded .workspace-title{justify-content:flex-end}.workspace.expanded .bottom-bar{padding-bottom:8px}#fileName{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;align-self:center}.header-actions{flex-wrap:wrap}#saveDialog{max-width:480px}
+
+#fullscreenMode{width:auto;margin:0}.workspace.expanded .view-actions{flex-wrap:wrap;justify-content:flex-end}
+
+/* Keep the height-limited fullscreen disk at its full diameter beside the inspector.
+   Narrow windows scroll horizontally rather than compressing the disk. */
+#studioLayout.expanded-layout{position:fixed;inset:0;z-index:5;height:100vh;display:grid;grid-template-columns:minmax(min(100vw,100vh),1fr) 315px;grid-template-rows:100vh;overflow:auto;background:#0c151d}
+.expanded-layout>.left{display:none}
+.expanded-layout>.right{grid-column:2;grid-row:1;height:100vh;max-height:100vh;overflow-y:auto;padding:22px 18px}
+.workspace-title{flex-wrap:wrap}.view-actions{flex-wrap:wrap}#fullscreenMode{max-width:100%}
+</style></head><body>
+<header><div class="brand">◉ <span>Hyperbolic Studio<small>A playground for curved spaces</small></span></div><div class="header-actions"><button id="demo">Load genus 2 example</button><button id="macbeath">Load Macbeath (genus 7)</button><button id="export" title="Cmd/Ctrl+S">Save</button><button id="saveAs" title="Cmd/Ctrl+Shift+S">Save As…</button><span id="fileName" class="mini">Untitled</span><button id="import">Open project</button><input id="file" type="file" accept=".json" hidden><button id="help">Guide</button></div></header>
+<main id="studioLayout"><aside class="left"><h2>The plane</h2><label>Tiling<select id="tiling"></select></label><div class="mini">Curvature K = −1 · Poincaré disk</div><label>Patch size<select id="density"><option value="450">Light · 450 seed tiles</option><option value="1000" selected>Balanced · 1,000 seed tiles</option><option value="2500">Detailed · 2,500 seed tiles</option></select></label><h3>Layers</h3><div id="layers"></div><label>Hyperbolic edge width<input id="width" type="range" min="0.003" max="0.035" step="0.001" value="0.012"></label><label>Center-to-vertex width<input id="radialWidth" type="range" min="0.1" max="1" step="0.05" value="0.4"></label><label>Hyperbolic dot radius<input id="radius" type="range" min="0.008" max="0.06" step="0.002" value="0.022"></label><label>Triangle contrast<input id="contrast" type="range" min="0" max="1" step="0.05" value="0.65"></label><h3>Construction</h3><div class="segmented"><button id="inspect" class="active">Label / pan</button><button id="region">Region Construction</button></div><p class="hint">Region Construction: click a polygon center, crossing dot, edge, or triangle. Click a fully selected group again to remove it.</p><button id="clearRegion" class="subtle">Clear region</button><p class="hint">Drag inside the disk to travel. Drag the circular handle to rotate. Cmd-click edge segments to select them for identification. Click any dot to name it for navigation.</p><div id="coverage" class="mini"></div><button id="home">⌾ Reset view</button></aside>
+<section class="workspace" id="workspace"><div class="workspace-title"><div><span class="eyebrow">THE UNIVERSAL COVER</span><h1>Explore the hyperbolic plane</h1></div><div class="view-actions"><select id="fullscreenMode" aria-label="Construction mode"><option value="inspect">Label / pan</option><option value="region">Region Construction</option></select><span id="viewInfo" class="pill">Ready</span><button id="fullscreen">Fullscreen</button></div></div><div id="canvasWrap"><canvas id="disk" aria-label="Interactive Poincaré disk tiling"></canvas><div id="tooltip" hidden></div><div id="selection" hidden></div></div><div class="bottom-bar"><span id="status">Select an object to begin.</span><span>∞ is the circle, not a wall</span></div></section>
+<aside class="right"><div class="tabs"><button id="objectsTab" class="active">Construction</button><button id="topologyTab">Topology</button></div><section id="objectsPanel">
+<h2>Identify edges</h2><p id="identificationHint" class="hint" aria-live="polite">Cmd-click segments to select two matching straight chains.</p>
+<div class="identify-actions"><button id="identify" class="accent" disabled>Identify selected edges</button><button id="cancelIdentify" hidden>Cancel</button></div>
+<div id="namePair" hidden><label>Shared name<input id="pairName" type="text" maxlength="80" placeholder="Name this identified edge pair"></label><button id="savePair" class="accent">Save identification</button></div>
+<div class="sort-row"><input id="search" type="search" placeholder="Find a name…" aria-label="Find a name"><select id="sort" aria-label="Sort names"><option value="asc">A → Z</option><option value="desc">Z → A</option></select></div>
+<div class="section-title"><h2>Identified Edges</h2><span id="edgeCount" class="pill">0</span></div><div id="identifiedList"></div>
+<div class="section-title vertices-title"><h2>Vertices</h2><span id="vertexCount" class="pill">0</span></div><div id="vertexList"></div>
+</section><section id="topologyPanel" hidden><h2>Your quotient surface</h2><p class="hint">Build a region from individual triangles or groups selected by clicking dots and edges, then identify every boundary segment. Internal edges remain ordinary adjacencies.</p><div id="topology"></div></section></aside></main>
+<dialog id="saveDialog"><h2>Save As</h2><p>This browser saves a downloaded copy. Choose its name below; your browser controls the destination and any replacement prompt.</p><label>Project filename<input id="saveFilename" type="text" maxlength="160" value="hyperbolic-studio.json"></label><div class="actions"><button id="confirmSave" class="active">Download project</button><button id="cancelSave">Cancel</button></div></dialog><dialog id="guide"><button id="closeGuide" class="close">×</button><span class="eyebrow">A SHORT FIELD GUIDE</span><h2>From a disk to a surface</h2><p>The disk is the entire hyperbolic plane. Geodesics are circular arcs perpendicular to its boundary. The apparent shrinking comes from the metric ds = 2|dz|/(1−|z|²).</p><ol><li>Choose a tiling. Primary polygons, their perpendicular dual, and center-to-vertex edges form a checkerboard of small geodesic triangles. Center-to-vertex edges have a sixth color, are thinner and fainter by default, and have a separate width control.</li><li>Cmd-click as many segments as you need to select two continuous straight chains. Straightness is measured along hyperbolic geodesics, which may look curved in the disk. Chains may mix primary, dual, and center-to-vertex segments, but their segment types and lengths must match in order (possibly reversed). Selected segments are highlighted. Ctrl-click also works.</li><li>Click <b>Identify selected edges</b>, then click one highlighted outer endpoint on each edge to specify which endpoints are identified. Endpoints do not need names. Choose the outer ends of each chain, rather than any interior dot.</li><li>After setting the orientation, enter one shared name and save. The pair appears once in <b>Identified Edges</b>, with one chevron style for the whole identification. Hover its row to highlight both edges. Click its name to rename it, or × to remove it. Escape or Cancel abandons an unfinished identification.</li><li>Click any dot to give it a unique navigation name. It appears in <b>Vertices</b>. Hover to highlight it; click its name to edit or use ⌾ to center the disk on it.</li><li>In Region Construction mode, click a dual vertex (primary center) to select its primary polygon, or a primary vertex to select its dual polygon. A crossing dot selects its four triangles; an edge segment selects its two triangles; clicking inside a triangle selects just that triangle. If a whole clicked group is already selected, the click removes it; otherwise it adds the missing triangles. The region can mix all these selections freely. Read Topology for closure, vertex-link checks, orientability, Euler characteristic, genus or crosscaps, area, and cone angles.</li></ol><p><b>Try the genus 2 example.</b> The regular {8,8} octagon has interior angles π/4. Opposite sides, paired with reversed boundary directions, produce a smooth genus 2 surface. Its area is 4π at K = −1.</p><p><b>Try the Macbeath example.</b> The Fricke–Macbeath surface is built from 72 regular {7,3} heptagons using the PSL(2,8) quotient of the (2,3,7) triangle group. Its 504 orientation-preserving symmetries attain the Hurwitz bound. The displayed connected region has 97 named boundary-edge pairs. Expected results: genus 7, χ = −12, area 24π, and all vertex angles 2π. Pan to examine the boundary and hover an Identified Edges row to see both sides of a gluing. The triangle subdivision gives V = 492, E = 1512, F = 1008.</p><p>A topological surface can have cone points: the angle sum around a glued vertex must be 2π for the displayed metric to be smooth. Red or amber diagnostics tell you what remains to check.</p><p><b>Mixed tilings:</b> truncated triheptagonal means squares, hexagons, and 14-gons (4.6.14). Its dual polygons are not regular. The crossings bisect primary edges; for a mixed tiling they need not bisect dual edges.</p><p><b>Navigation limits:</b> this is a finite numerical patch of an infinite tiling. Increase patch size if you reach its edge; Reset view returns to its center. Picking is enabled only where objects remain visually distinct. Widths and dots use hyperbolic units; hovering and selection add a screen-space halo.</p><p>Projects auto-save locally in this browser; Save updates the chosen file in browsers supporting direct file access. Save As chooses a new file. Other browsers download a JSON copy with the chosen name; they may add a number rather than overwrite. Cmd/Ctrl+S saves; Cmd/Ctrl+Shift+S uses Save As. The mode dropdown above the disk works in both views. Fullscreen places the Construction/Topology pane beside the disk; use Exit fullscreen or Escape to return. Switching tilings starts a separate construction, so save first if you want to keep the current one.</p><p>Useful next experiments: reverse a pairing to see orientability change; compare vertex angle sums; select several tiles and inspect how the quotient cell counts change.</p><p class="mini">References: <a href="https://www.d.umn.edu/~ddunham/dunbrid00.pdf" target="_blank" rel="noreferrer">Dunham, hyperbolic tilings and duals</a> · <a href="https://pi.math.cornell.edu/~mec/Winter2009/Victor/part4.htm" target="_blank" rel="noreferrer">Cornell, geometries of surfaces</a></p></dialog><div id="toast" role="status"></div><script>(()=>{const G=(()=>{// Curvature -1; complex disk coordinates are [x,y].
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]], sub=(a,b)=>[a[0]-b[0],a[1]-b[1]], mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]], scale=(a,s)=>[a[0]*s,a[1]*s], conj=a=>[a[0],-a[1]], norm=a=>Math.hypot(...a);
+const div=(a,b)=>scale(mul(a,conj(b)),1/(b[0]*b[0]+b[1]*b[1]));
+const toOrigin=(z,a)=>div(sub(z,a),sub([1,0],mul(conj(a),z)));
+const fromOrigin=(z,a)=>div(add(z,a),add([1,0],mul(conj(a),z)));
+const rotate=(z,t)=>mul(z,[Math.cos(t),Math.sin(t)]);
+const distance=(a,b)=>2*Math.atanh(Math.min(1-1e-14,norm(toOrigin(b,a))));
+function interpolate(a,b,t){let w=toOrigin(b,a),r=norm(w);return r<1e-14?a:fromOrigin(scale(w,Math.tanh(t*Math.atanh(Math.min(r,1-1e-14)))/r),a)}
+const midpoint=(a,b)=>interpolate(a,b,.5);
+const key=z=>z.map(x=>Math.round(x*1e8)).join(',');
+function reflect(z,a,b){const w=toOrigin(z,a),d=toOrigin(b,a);return fromOrigin(mul(div(d,conj(d)),conj(w)),a)}
+function angle(a,b,c){let u=toOrigin(a,b),v=toOrigin(c,b);return Math.acos(Math.max(-1,Math.min(1,(u[0]*v[0]+u[1]*v[1])/(norm(u)*norm(v)))))}
+function incenter(a,b,c){const pts=[a,b,c],weights=[Math.sinh(distance(b,c)),Math.sinh(distance(a,c)),Math.sinh(distance(a,b))];let h=[0,0,0];pts.forEach((z,i)=>{const r2=norm(z)**2,d=1-r2;h[0]+=weights[i]*(1+r2)/d;h[1]+=weights[i]*2*z[0]/d;h[2]+=weights[i]*2*z[1]/d});let n=Math.sqrt(h[0]**2-h[1]**2-h[2]**2);return [h[1]/(h[0]+n),h[2]/(h[0]+n)]}
+const presets={hept:{name:'Heptagonal · {7,3}',p:7,q:3},oct:{name:'Octagonal · {8,3}',p:8,q:3},bolza:{name:'Octagonal · {8,8}',p:8,q:8},pent:{name:'Pentagonal · {5,4}',p:5,q:4},square:{name:'Square · {4,5}',p:4,q:5},tri:{name:'Triangular · {3,7}',p:3,q:7},truncated:{name:'Truncated triheptagonal · 4.6.14',p:7,q:3,mixed:true}};
+function baseTiles(p,q,limit=1000){const r=Math.sqrt(Math.cos(Math.PI/p+Math.PI/q)/Math.cos(Math.PI/p-Math.PI/q));const first=Array.from({length:p},(_,i)=>rotate([r,0],(i+.5)*2*Math.PI/p));let tiles=[{c:[0,0],v:first}],seen=new Set(['0,0']);for(let i=0;i<tiles.length&&tiles.length<limit;i++){const f=tiles[i];for(let j=0;j<p&&tiles.length<limit;j++){const a=f.v[j],b=f.v[(j+1)%p],c=reflect(f.c,a,b),k=key(c);if(norm(c)>.9975||seen.has(k))continue;seen.add(k);let v=f.v.map(z=>reflect(z,a,b)).reverse();tiles.push({c,v})}}return tiles}
+function ccw(v,c){return v.slice().sort((a,b)=>{const aa=toOrigin(a,c),bb=toOrigin(b,c);return Math.atan2(aa[1],aa[0])-Math.atan2(bb[1],bb[0])})}
+function buildMesh(preset='hept',limit=1000){const spec=presets[preset],base=baseTiles(spec.p,spec.q,limit);let polys=base;if(spec.mixed){let groups=new Map();function put(c,z,n){let k=key(c),g=groups.get(k);if(!g)groups.set(k,g={c,z:new Map(),n});g.z.set(key(z),z)}for(const f of base){for(let i=0;i<f.v.length;i++){const a=f.v[i],b=f.v[(i+1)%f.v.length],m=midpoint(a,b);for(const v of [a,b]){let z=incenter(f.c,v,m);put(f.c,z,2*spec.p);put(v,z,2*spec.q);put(m,z,4)}}}polys=[...groups.values()].filter(g=>g.z.size===g.n).map(g=>({c:g.c,v:ccw([...g.z.values()],g.c)}))}
+let dots=new Map(),edges=new Map(),faces=[],sides=new Map();const dot=(z,type)=>{let id=type[0]+':'+key(z);if(!dots.has(id))dots.set(id,{id,z,type});return id};const edge=(a,b,type)=>{let id=type[0]+':'+[a,b].sort().join('|');if(!edges.has(id))edges.set(id,{id,a,b,type,length:distance(dots.get(a).z,dots.get(b).z)});return id};
+for(const f of polys){let c=dot(f.c,'center'),vs=f.v.map(v=>dot(v,'vertex')),boundary=[],es=[],triangles=[];for(let i=0;i<vs.length;i++){let a=vs[i],b=vs[(i+1)%vs.length],m=dot(midpoint(dots.get(a).z,dots.get(b).z),'crossing');boundary.push(a,m);es.push(edge(a,m,'primary'),edge(m,b,'primary'));edge(c,m,'dual');edge(c,a,'radial');triangles.push([c,a,m,0],[c,m,b,1]);const sk=[a,b].sort().join('|');if(!sides.has(sk))sides.set(sk,[]);sides.get(sk).push({c,m,a,b})}faces.push({id:'P:'+c,c,vertices:boundary,edges:es,triangles,family:'primary'})}
+// The dual's polygon at each original vertex alternates centers and crossings.
+let around=new Map();for(const f of faces){for(let i=0;i<f.vertices.length;i+=2){let v=f.vertices[i];if(!around.has(v))around.set(v,new Set());around.get(v).add(f.c);around.get(v).add(f.vertices[(i+1)%f.vertices.length]);around.get(v).add(f.vertices[(i-1+f.vertices.length)%f.vertices.length])}}
+let dualFaces=[];for(const [v,ids]of around){let vv=ccw([...ids].map(id=>dots.get(id).z),dots.get(v).z).map(z=>[...ids].find(id=>dots.get(id).z===z));if(vv.length<6||vv.length%2)continue;let es=vv.map((a,i)=>'d:'+ [a,vv[(i+1)%vv.length]].sort().join('|'));if(es.some(id=>!edges.has(id)))continue;dualFaces.push({id:'D:'+v,c:v,vertices:vv,edges:es,family:'dual'})}
+const triangles=[],triangleById=new Map(),trianglesByDot=new Map(),trianglesByEdge=new Map();
+const edgeByEndpoints=new Map([...edges.values()].map(e=>[[e.a,e.b].sort().join('|'),e.id]));
+function incident(index,key,id){if(!index.has(key))index.set(key,[]);index.get(key).push(id)}
+for(const f of faces)for(const flag of f.triangles){
+  const vertices=flag.slice(0,3),id='T:'+vertices.slice().sort().join('|');
+  const es=vertices.map((v,i)=>edgeByEndpoints.get([v,vertices[(i+1)%3]].sort().join('|')));
+  if(es.some(e=>!e))throw Error('Triangle boundary is missing an edge.');
+  const klein=vertices.map(v=>toKlein(dots.get(v).z));
+  const t={id,vertices,edges:es,family:'triangle',shade:flag[3],primary:f.id,klein,
+    bounds:[Math.min(...klein.map(z=>z[0])),Math.min(...klein.map(z=>z[1])),Math.max(...klein.map(z=>z[0])),Math.max(...klein.map(z=>z[1]))]};
+  triangles.push(t);triangleById.set(id,t);
+  for(const v of vertices)incident(trianglesByDot,v,id);
+  for(const e of es)incident(trianglesByEdge,e,id);
+}
+return {dots,edges,faces,dualFaces,triangles,triangleById,trianglesByDot,trianglesByEdge,spec,preset,baseCount:base.length}}
+function geodesicSamples(a,b,n=12){return Array.from({length:n+1},(_,i)=>interpolate(a,b,i/n))}
+function faceArea(face,mesh){const v=face.vertices.map(id=>mesh.dots.get(id).z);return (v.length-2)*Math.PI-v.reduce((s,z,i)=>s+angle(v[(i-1+v.length)%v.length],z,v[(i+1)%v.length]),0)}
+
+// Incidence is geometric, not transitive through a chain or a quotient gluing.
+function objectsTouch(mesh,a,b){
+  if(a===b)return true;
+  const ea=mesh.edges.get(a),eb=mesh.edges.get(b);
+  if(ea&&eb)return ea.a===eb.a||ea.a===eb.b||ea.b===eb.a||ea.b===eb.b;
+  if(ea)return mesh.dots.has(b)&&(ea.a===b||ea.b===b);
+  if(eb)return mesh.dots.has(a)&&(eb.a===a||eb.b===a);
+  return false;
+}
+
+// Straight means one hyperbolic geodesic, not a straight Euclidean chord on screen.
+function straightContinuation(mesh,first,second,at){
+  const a=mesh.edges.get(first),b=mesh.edges.get(second),z=mesh.dots.get(at)?.z;
+  if(!a||!b||!z||first===second)return false;
+  if(![a.a,a.b].includes(at)||![b.a,b.b].includes(at))return false;
+  const u=toOrigin(mesh.dots.get(a.a===at?a.b:a.a).z,z),v=toOrigin(mesh.dots.get(b.a===at?b.b:b.a).z,z),n=norm(u)*norm(v);
+  return n>1e-16&&u[0]*v[0]+u[1]*v[1]<0&&Math.abs(u[0]*v[1]-u[1]*v[0])/n<2e-5;
+}
+function orderedChain(mesh,side,start){
+  if(!side.ends.includes(start))throw Error('Choose an outer endpoint of each selected chain.');
+  const forward=side.ends[0]===start,edges=forward?side.edges:[...side.edges].reverse(),vertices=forward?side.vertices:[...side.vertices].reverse();
+  return edges.map((edge,i)=>({edge,start:vertices[i]}));
+}
+function matchingChains(mesh,a,b){
+  return a.length===b.length&&a.every((id,i)=>{
+    const x=mesh.edges.get(id),y=mesh.edges.get(b[i]);
+    return x.type===y.type&&Math.abs(x.length-y.length)<1e-5;
+  });
+}
+function identificationSides(mesh,ids){
+  if(ids.length<2||ids.length%2||new Set(ids).size!==ids.length)throw Error('Select two matching straight chains with the same number of segments.');
+  if(ids.some(id=>!mesh.edges.has(id)))throw Error('The selection contains an unknown segment.');
+  const at=new Map();for(const id of ids){const e=mesh.edges.get(id);for(const v of [e.a,e.b]){if(!at.has(v))at.set(v,[]);at.get(v).push(id)}}
+  const next=new Map();
+  for(const [v,edges]of at){const connections=new Map();for(let i=0;i<edges.length;i++)for(let j=i+1;j<edges.length;j++){
+    if(!straightContinuation(mesh,edges[i],edges[j],v))continue;
+    if(connections.has(edges[i])||connections.has(edges[j]))throw Error('Overlapping segments make the straight chains ambiguous.');
+    connections.set(edges[i],edges[j]);connections.set(edges[j],edges[i]);
+  }next.set(v,connections)}
+  const side=(edges,vertices)=>({edges,vertices,ends:[vertices[0],vertices.at(-1)],middle:edges.length===2?vertices[1]:null});
+  const seen=new Set(),chains=[];
+  for(const id of ids){
+    if(seen.has(id))continue;
+    const e=mesh.edges.get(id);let initial=null;
+    // Find this chain's end first, regardless of selection order.
+    let cur=id,v=e.a;const back=new Set();
+    while(true){if(back.has(cur))throw Error('A selected chain must have two outer endpoints.');back.add(cur);const previous=next.get(v).get(cur);if(!previous){initial=v;break}const p=mesh.edges.get(previous);v=p.a===v?p.b:p.a;cur=previous}
+    let edges=[],vertices=[initial];v=initial;
+    while(cur){if(seen.has(cur))throw Error('Selected chains overlap.');seen.add(cur);edges.push(cur);const edge=mesh.edges.get(cur);v=edge.a===v?edge.b:edge.a;vertices.push(v);cur=next.get(v).get(cur)}
+    chains.push(side(edges,vertices));
+  }
+  // Adjacent chains on one geodesic have a common endpoint and appear as one run.
+  if(chains.length===1){const chain=chains[0],n=chain.edges.length/2;chains.splice(0,1,side(chain.edges.slice(0,n),chain.vertices.slice(0,n+1)),side(chain.edges.slice(n),chain.vertices.slice(n)))}
+  if(chains.length!==2)throw Error('The selection must form exactly two continuous straight chains, without gaps or bends.');
+  const [a,b]=chains;
+  if(!matchingChains(mesh,a.edges,b.edges)&&!matchingChains(mesh,a.edges,[...b.edges].reverse()))throw Error('The two chains must match segment by segment in edge type and hyperbolic length.');
+  return chains;
+}
+function orientIdentification(mesh,sides,start1,start2){
+  const a=orderedChain(mesh,sides[0],start1),b=orderedChain(mesh,sides[1],start2);
+  if(!matchingChains(mesh,a.map(x=>x.edge),b.map(x=>x.edge)))throw Error('The segment types or lengths do not match in this orientation. Choose the other endpoint.');
+  return a.map((x,i)=>({e1:x.edge,v1:x.start,e2:b[i].edge,v2:b[i].start}));
+}
+
+// The Klein model makes geodesic sides straight, so triangle picking is exact
+// up to floating-point error and independent of canvas pixel density.
+function toKlein(z){return scale(z,2/(1+norm(z)**2))}
+function triangleAt(mesh,z){
+  const k=toKlein(z);
+  for(const t of mesh.triangles){
+    const [left,bottom,right,top]=t.bounds;if(k[0]<left||k[0]>right||k[1]<bottom||k[1]>top)continue;
+    const signed=t.klein.map((a,i)=>{const b=t.klein[(i+1)%3];return (b[0]-a[0])*(k[1]-a[1])-(b[1]-a[1])*(k[0]-a[0])});
+    if(signed.every(x=>x>=-1e-14)||signed.every(x=>x<=1e-14))return t;
+  }
+  return null;
+}
+function regionTriangles(mesh,id){
+  if(mesh.triangleById.has(id))return [id];
+  return mesh.trianglesByDot.get(id)||mesh.trianglesByEdge.get(id)||[];
+}
+function expandRegionSelection(mesh,ids){
+  const polygons=new Map([...mesh.faces,...mesh.dualFaces].map(f=>[f.id,f]));
+  const result=new Set();for(const id of ids){
+    if(mesh.triangleById.has(id)){result.add(id);continue}
+    const f=polygons.get(id);if(!f)throw Error('Region contains unknown cells.');
+    for(const triangle of mesh.trianglesByDot.get(f.c)||[])result.add(triangle);
+  }
+  return result;
+}
+function toggleRegionTriangles(selected,ids){
+  const remove=ids.length>0&&ids.every(id=>selected.has(id));let changed=0;
+  for(const id of ids){if(remove){selected.delete(id);changed++}else if(!selected.has(id)){selected.add(id);changed++}}
+  return {remove,changed};
+}
+
+// Fricke–Macbeath: kernel of Δ+(2,3,7) → PSL(2,8).
+// GF(8)=F2[t]/(t³+t+1); matrices R,S have orders 7,2 and RS has order 3.
+// Right multiplication by R advances a face dart; S reverses an edge dart.
+function macbeathExample(mesh){
+  if(mesh.preset!=='hept')throw Error('The Macbeath example requires the {7,3} tiling.');
+  function field(a,b){let result=0;for(;b;b>>=1,a<<=1){if(a&8)a^=11;if(b&1)result^=a}return result}
+  const multiply=(a,b)=>[field(a[0],b[0])^field(a[1],b[2]),field(a[0],b[1])^field(a[1],b[3]),field(a[2],b[0])^field(a[3],b[2]),field(a[2],b[1])^field(a[3],b[3])];
+  const identity=[1,0,0,1],R=[2,0,1,5],S=[0,1,1,0],key=a=>a.join(',');
+  const powers=[identity];for(let i=1;i<7;i++)powers.push(multiply(powers[i-1],R));
+  const coset=g=>powers.map(r=>key(multiply(g,r))).sort()[0];
+  const sideUses=new Map();
+  for(const face of mesh.faces)for(let i=0;i<7;i++){
+    const m=face.vertices[2*i+1];if(!sideUses.has(m))sideUses.set(m,[]);sideUses.get(m).push({face,i});
+  }
+  const seed=mesh.faces.find(f=>norm(mesh.dots.get(f.c).z)<1e-7);
+  const chosen=[{face:seed,darts:powers}],seen=new Set([coset(identity)]),byFace=new Map([[seed.id,chosen[0]]]);
+  for(let n=0;n<chosen.length;n++){
+    const {face,darts}=chosen[n];
+    for(let i=0;i<7;i++){
+      const across=multiply(darts[i],S),id=coset(across);
+      if(seen.has(id))continue;
+      const neighbor=sideUses.get(face.vertices[2*i+1]).find(u=>u.face!==face);
+      if(!neighbor)throw Error('Increase the patch size to construct the Macbeath surface.');
+      const next={face:neighbor.face,darts:Array.from({length:7},(_,j)=>multiply(across,powers[(j-neighbor.i+7)%7]))};
+      if(byFace.has(next.face.id))throw Error('Inconsistent Macbeath face development.');
+      seen.add(id);chosen.push(next);byFace.set(next.face.id,next);
+    }
+  }
+  if(chosen.length!==72)throw Error('Macbeath quotient must contain 72 heptagons.');
+  const byDart=new Map();
+  for(const entry of chosen)entry.darts.forEach((g,i)=>{const id=key(g);if(byDart.has(id))throw Error('Repeated Macbeath dart.');byDart.set(id,{face:entry.face,i})});
+  if(byDart.size!==504)throw Error('Macbeath quotient must have 504 darts.');
+  const pairs=[],done=new Set();let groups=0;
+  for(const {face,darts}of chosen)for(let i=0;i<7;i++){
+    const mate=byDart.get(key(multiply(darts[i],S))),a=face.vertices[2*i],b=face.vertices[(2*i+2)%14],m=face.vertices[2*i+1];
+    if(!mate)throw Error('Missing Macbeath edge partner.');
+    const j=mate.i,f=mate.face,other=f.vertices[2*j+1];
+    if(m===other){if(a!==f.vertices[(2*j+2)%14]||b!==f.vertices[2*j])throw Error('Inconsistent interior Macbeath edge.');continue}
+    if(done.has(m))continue;
+    done.add(m);done.add(other);const group='mac'+(++groups),name='M'+String(groups).padStart(2,'0');
+    // Reverse boundary direction, pairing both halves of each primary side.
+    pairs.push({e1:face.edges[2*i],v1:a,e2:f.edges[2*j+1],v2:f.vertices[(2*j+2)%14],group,name});
+    pairs.push({e1:face.edges[2*i+1],v1:m,e2:f.edges[2*j],v2:other,group,name});
+  }
+  return {selected:expandRegionSelection(mesh,chosen.map(e=>e.face.id)),pairs,heptagons:72,darts:504};
+}
+
+return {add,div,toOrigin,fromOrigin,rotate,distance,interpolate,midpoint,key,reflect,angle,incenter,presets,baseTiles,buildMesh,geodesicSamples,faceArea,objectsTouch,straightContinuation,orderedChain,identificationSides,orientIdentification,toKlein,triangleAt,regionTriangles,expandRegionSelection,toggleRegionTriangles,macbeathExample,sub,mul,scale,conj,norm}})();
+const {angle,faceArea,expandRegionSelection}=G;
+class DSU{constructor(xs){this.p=new Map(xs.map(x=>[x,x]))}get(x){let p=this.p.get(x);if(p===undefined)throw Error('Unknown cell');if(p!==x)this.p.set(x,p=this.get(p));return p}join(a,b){this.p.set(this.get(a),this.get(b))}}
+function analyze(mesh,selected,pairs){let region;try{region=expandRegionSelection(mesh,selected)}catch(e){return {status:'invalid',message:e.message}}const fs=mesh.triangles.filter(f=>region.has(f.id));if(!fs.length)return {status:'empty',message:'Choose Region Construction and click triangles, edges, or dots to define your fundamental region.'};let uses=new Map(),vids=new Set();fs.forEach((f,fi)=>f.edges.forEach((e,i)=>{if(!uses.has(e))uses.set(e,[]);uses.get(e).push({fi,i,a:f.vertices[i],b:f.vertices[(i+1)%f.vertices.length]});vids.add(f.vertices[i])}));let vd=new DSU([...vids]),ed=new DSU([...uses.keys()]),fd=new DSU(fs.map((_,i)=>i)),boundary=[...uses].filter(([,u])=>u.length===1).map(([e])=>e),paired=new Set(),joins=[],orientation=[];
+for(const [e,u]of uses){if(u.length>2)return {status:'invalid',message:'The selected cells do not form a surface region.'};if(u.length===2){joins.push([u[0],u[1],true]);fd.join(u[0].fi,u[1].fi);orientation.push([u[0].fi,u[1].fi,0])}}
+for(const p of pairs){if(!uses.has(p.e1)&&!uses.has(p.e2))continue;if(!boundary.includes(p.e1)||!boundary.includes(p.e2))return {status:'invalid',message:'A gluing touches this region but is not a pair of its boundary segments.'};if(paired.has(p.e1)||paired.has(p.e2))return {status:'invalid',message:'A boundary segment is paired more than once.'};const u=uses.get(p.e1)[0],v=uses.get(p.e2)[0],e1=mesh.edges.get(p.e1),e2=mesh.edges.get(p.e2);if(Math.abs(e1.length-e2.length)>1e-5)return {status:'invalid',message:'Paired segments have unequal hyperbolic lengths.'};const map=x=>x===p.v1?p.v2:(p.v2===e2.a?e2.b:e2.a),rev=map(u.a)===v.b;vd.join(u.a,map(u.a));vd.join(u.b,map(u.b));ed.join(p.e1,p.e2);fd.join(u.fi,v.fi);paired.add(p.e1);paired.add(p.e2);joins.push([u,v,rev]);orientation.push([u.fi,v.fi,rev?0:1])}
+let open=boundary.filter(e=>!paired.has(e));if(open.length)return {status:'open',message:`${open.length} unpaired boundary segments. Cmd-click boundary segments and use Identify to pair them.`,boundary:boundary.length,open:open.length,faces:fs.length};
+// A corner contributes an interval to the vertex link. Check its glued link is one circle.
+let corners=[],link=new Map();fs.forEach((f,fi)=>f.vertices.forEach((v,i)=>{let id=fi+':'+i;corners.push({id,v,fi,i});link.set(id,[])}));for(const [u,v,rev]of joins){const n=fs[u.fi].vertices.length,m=fs[v.fi].vertices.length;const ends=[[u.i,rev?(v.i+1)%m:v.i],[(u.i+1)%n,rev?v.i:(v.i+1)%m]];for(const [i,j]of ends){let a=u.fi+':'+i,b=v.fi+':'+j;link.get(a).push(b);link.get(b).push(a)}}
+let groups=new Map();for(const c of corners){const k=vd.get(c.v);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(c)}let angleSums=[];for(const cs of groups.values()){let seen=new Set(),stack=[cs[0].id];while(stack.length){let x=stack.pop();if(seen.has(x))continue;seen.add(x);stack.push(...link.get(x))}if(seen.size!==cs.length||cs.some(c=>link.get(c.id).length!==2))return {status:'invalid',message:'A quotient vertex has a disconnected or non-circular link; this is not a surface.'};let sum=0;for(const c of cs){let vs=fs[c.fi].vertices.map(v=>mesh.dots.get(v).z),n=vs.length;sum+=angle(vs[(c.i-1+n)%n],vs[c.i],vs[(c.i+1)%n])}angleSums.push(sum)}
+const adjacency=fs.map(()=>[]);for(const [a,b,flip]of orientation){adjacency[a].push([b,flip]);adjacency[b].push([a,flip])}
+let orientations=new Map(),orientable=true;for(let seed=0;seed<fs.length;seed++){if(orientations.has(seed))continue;orientations.set(seed,0);let stack=[seed];while(stack.length){let a=stack.pop();for(const [b,flip]of adjacency[a]){const w=orientations.get(a)^flip;if(orientations.has(b)){if(orientations.get(b)!==w)orientable=false}else{orientations.set(b,w);stack.push(b)}}}}
+const V=groups.size,E=new Set([...uses.keys()].map(e=>ed.get(e))).size,F=fs.length,chi=V-E+F,components=new Set(fs.map((_,i)=>fd.get(i))).size,smooth=angleSums.every(a=>Math.abs(a-2*Math.PI)<1e-4),area=fs.reduce((s,f)=>s+faceArea(f,mesh),0);return {status:'closed',message:components===1?(orientable?`Closed orientable surface · genus ${(2-chi)/2}`:`Closed nonorientable surface · ${2-chi} crosscaps`):`${components} closed surface components`,V,E,F,chi,components,orientable,smooth,angleSums,area,gaussBonnet:area+2*Math.PI*chi-angleSums.reduce((s,a)=>s+2*Math.PI-a,0)}
+}
+
+const $=s=>document.getElementById(s),canvas=$('disk'),ctx=canvas.getContext('2d'),TAU=2*Math.PI;
+const colors={primary:'#66d4ca',vertex:'#f3c66a',dual:'#9b8fea',center:'#f28eb4',crossing:'#c2e9ef',radial:'#d29570'};
+let visible={primary:true,vertex:true,dual:true,center:true,crossing:true,radial:true,shading:true};
+let mesh,labels={},pairs=[],selected=new Set(),mode='inspect',camera={A:[1,0],B:[0,0]},rotation=0,hover=null,listHover=[],edgeSelection=new Set(),pending=null,active=null,drag=null,size={w:0,h:0,c:[0,0],r:1},projected=new Map(),pickables=[],dirty=false,saveTimer;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(s){$('toast').textContent=s;$('toast').classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').classList.remove('show'),5000)}
+function transform(z,c=camera){return G.div(G.add(G.mul(c.A,z),c.B),G.add(G.mul(G.conj(c.B),z),G.conj(c.A)))}
+function compose(c,d){let A=G.add(G.mul(c.A,d.A),G.mul(c.B,G.conj(d.B))),B=G.add(G.mul(c.A,d.B),G.mul(c.B,G.conj(d.A))),n=Math.sqrt(Math.max(1e-16,G.norm(A)**2-G.norm(B)**2));return {A:G.scale(A,1/n),B:G.scale(B,1/n)}}
+const shift=a=>({A:[1/Math.sqrt(1-G.norm(a)**2),0],B:G.scale(a,1/Math.sqrt(1-G.norm(a)**2))});
+const turn=t=>({A:[Math.cos(t/2),Math.sin(t/2)],B:[0,0]});
+function screen(z){return [size.c[0]+size.r*z[0],size.c[1]-size.r*z[1]]}
+function diskPoint(e){const r=canvas.getBoundingClientRect();return [(e.clientX-r.left-size.c[0])/size.r,-(e.clientY-r.top-size.c[1])/size.r]}
+function appendGeo(path,a,b,move=false){let [x,y]=screen(a),[u,v]=screen(b);if(move)path.moveTo(x,y);const det=a[0]*b[1]-a[1]*b[0];if(Math.abs(det)<1e-10||G.norm(G.sub(a,b))<1e-8){path.lineTo(u,v);return}let aa=(1+G.norm(a)**2)/2,bb=(1+G.norm(b)**2)/2,c=[(aa*b[1]-bb*a[1])/det,(a[0]*bb-b[0]*aa)/det],r=G.norm(G.sub(a,c)),s=screen(c),t1=Math.atan2(y-s[1],x-s[0]),t2=Math.atan2(v-s[1],u-s[0]),d=((t2-t1+3*Math.PI)%TAU)-Math.PI;if(!Number.isFinite(r)||r>1e6){path.lineTo(u,v);return}path.arc(s[0],s[1],r*size.r,t1,t1+d,d<0)}
+function polygon(ids){let path=new Path2D();for(let i=0;i<ids.length;i++)appendGeo(path,projected.get(ids[i]),projected.get(ids[(i+1)%ids.length]),i===0);path.closePath();return path}
+function object(id){return mesh.dots.get(id)||mesh.edges.get(id)}
+function pairGroups(){const groups=new Map();for(const p of pairs){if(!groups.has(p.group))groups.set(p.group,{id:p.group,name:p.name,records:[]});groups.get(p.group).records.push(p)}return [...groups.values()]}
+function groupEdges(group){return group.records.flatMap(p=>[p.e1,p.e2])}
+function pairMark(i){return {color:`hsl(${(Math.floor(i/3)*360/Math.max(1,Math.ceil(pairGroups().length/3))+15)%360} 85% 69%)`,n:i%3+1}}
+function edgeGroup(id){return pairGroups().find(g=>g.records.some(p=>p.e1===id||p.e2===id))}
+function displayName(id){return labels[id]||edgeGroup(id)?.name||'Unlabeled'}
+function nextGroupId(){let n=1;const used=new Set(pairs.map(p=>p.group));while(used.has('g'+n))n++;return 'g'+n}
+function render(){dirty=false;const {w,h,r,c}=size;ctx.clearRect(0,0,w,h);ctx.save();ctx.beginPath();ctx.arc(...c,r,0,TAU);ctx.fillStyle='#0e2029';ctx.fill();ctx.clip();projected=new Map([...mesh.dots].map(([id,d])=>[id,transform(d.z)]));pickables=[];
+const contrast=+$('contrast').value;
+for(const f of mesh.faces){const z=projected.get(f.c);if(G.norm(z)>.9985)continue;if(visible.shading){for(const tri of f.triangles){ctx.fillStyle=tri[3]?`rgba(117,163,181,${.08+.29*contrast})`:'#122932';ctx.fill(polygon(tri.slice(0,3)))}}}
+const regionBoundary=new Map();
+for(const id of selected){
+  const t=mesh.triangleById.get(id);if(!t)continue;
+  ctx.fillStyle='#cfbc6255';ctx.fill(polygon(t.vertices));
+  for(const e of t.edges)regionBoundary.set(e,(regionBoundary.get(e)||0)+1);
+}
+ctx.strokeStyle='#ffe394';ctx.lineWidth=1.3;
+for(const [id,count]of regionBoundary){if(count!==1)continue;const e=mesh.edges.get(id),path=new Path2D();appendGeo(path,projected.get(e.a),projected.get(e.b),true);ctx.stroke(path)}
+const edgeWidth=+$('width').value;
+function strokeEdge(e,color,mult=1){const a=projected.get(e.a),b=projected.get(e.b),mid=G.midpoint(a,b),rs=G.norm(mid);if(rs>.999||(!visible[e.type]&&mult===1))return;const n=Math.max(2,Math.min(18,Math.ceil(G.norm(G.sub(a,b))*r/14)));ctx.strokeStyle=color;ctx.globalAlpha=e.type==='radial'&&mult===1?0.55:1;ctx.lineCap='round';for(let i=0;i<n;i++){const u=G.interpolate(a,b,i/n),v=G.interpolate(a,b,(i+1)/n),m=G.midpoint(u,v),width=edgeWidth*(e.type==='radial'?+$('radialWidth').value:1)*(1-G.norm(m)**2)*r/2*mult;if(width<.055)continue;ctx.lineWidth=width;let path=new Path2D();appendGeo(path,u,v,true);ctx.stroke(path)}ctx.globalAlpha=1}
+for(const e of mesh.edges.values()){const a=projected.get(e.a),b=projected.get(e.b);strokeEdge(e,colors[e.type]);const mid=G.midpoint(a,b),len=G.norm(G.sub(a,b))*r;if(visible[e.type]&&G.norm(mid)<.94&&len>11){pickables.push({id:e.id,a:screen(a),b:screen(b),z:mid,edge:true})}}
+const groups=pairGroups();
+for(let i=0;i<groups.length;i++){
+  const group=groups[i],{color,n}=pairMark(i);
+  for(const id of groupEdges(group))strokeEdge(mesh.edges.get(id),color,2.5);
+  const sides=G.identificationSides(mesh,groupEdges(group));
+  for(const side of sides){
+    const start=side.ends.find(v=>group.records.some(p=>(side.edges.includes(p.e1)&&p.v1===v)||(side.edges.includes(p.e2)&&p.v2===v)));
+    const a=projected.get(start),b=projected.get(side.ends.find(v=>v!==start)),mid=G.midpoint(a,b);
+    if(G.norm(mid)>.98)continue;
+    const len=G.norm(G.sub(a,b))*r;if(len<8)continue;
+    for(let j=0;j<n;j++){
+      const t=.5+(j-(n-1)/2)*Math.min(.16,7/len),m=G.interpolate(a,b,t),s=screen(m),u=screen(G.interpolate(a,b,Math.min(.98,t+.01))),ang=Math.atan2(u[1]-s[1],u[0]-s[0]),sz=Math.min(5,len/5);
+      ctx.strokeStyle=color;ctx.lineWidth=Math.max(.7,Math.min(2,len/15));ctx.beginPath();ctx.moveTo(s[0]-sz*Math.cos(ang-.65),s[1]-sz*Math.sin(ang-.65));ctx.lineTo(...s);ctx.lineTo(s[0]-sz*Math.cos(ang+.65),s[1]-sz*Math.sin(ang+.65));ctx.stroke();
+    }
+  }
+}
+const hr=+$('radius').value,t=Math.tanh(hr/2);
+for(const [id,d]of mesh.dots){if(!visible[d.type])continue;const z=projected.get(id),r2=G.norm(z)**2;if(r2>.9995)continue;const rr=(1-r2)*t/(1-r2*t*t)*r;if(rr<.07)continue;const center=G.scale(z,(1-t*t)/(1-r2*t*t)),s=screen(center);ctx.beginPath();ctx.arc(...s,rr,0,TAU);ctx.fillStyle=colors[d.type];ctx.fill();if(G.norm(z)<.94&&rr>.65)pickables.push({id,z,s:screen(z),radius:rr,edge:false})}
+for(const id of new Set([hover?.id,...listHover,...edgeSelection,...orientationDots(),active])){if(!id||!object(id))continue;ctx.strokeStyle='#ffffff';ctx.lineWidth=edgeSelection.has(id)?3:2;if(mesh.dots.has(id)){ctx.beginPath();ctx.arc(...screen(projected.get(id)),7,0,TAU);ctx.stroke()}else{const e=mesh.edges.get(id);let path=new Path2D();appendGeo(path,projected.get(e.a),projected.get(e.b),true);ctx.stroke(path)}}
+ctx.restore();ctx.beginPath();ctx.arc(...c,r,0,TAU);ctx.strokeStyle='#53737c';ctx.lineWidth=1;ctx.stroke();const handle=screen(G.rotate([1,0],Math.PI/2+rotation));ctx.beginPath();ctx.arc(...handle,8,0,TAU);ctx.fillStyle='#a9e5d4';ctx.fill();ctx.strokeStyle='#143333';ctx.lineWidth=3;ctx.stroke();ctx.beginPath();ctx.arc(...handle,2,0,TAU);ctx.fillStyle='#244c48';ctx.fill();$('viewInfo').textContent=pending?'Orient selected edges':edgeSelection.size?edgeSelection.size+' segments selected':mode==='region'?'Region Construction':'Drag to travel';}
+function requestRender(){if(!dirty){dirty=true;requestAnimationFrame(render)}}
+function resize(){let box=$('canvasWrap').getBoundingClientRect(),dpr=devicePixelRatio||1;canvas.width=box.width*dpr;canvas.height=box.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);size={w:box.width,h:box.height,c:[box.width/2,box.height/2],r:Math.max(30,Math.min(box.width,box.height)/2-28)};requestRender()}
+function pick(z){const s=screen(z);if(pending){let nearest=null,best=10;for(const id of orientationDots()){const d=G.norm(G.sub(s,screen(projected.get(id))));if(d<best){nearest={id,edge:false};best=d}}if(nearest)return nearest}if(G.norm(z)>.94)return null;let best=null,min=Infinity;for(const o of pickables){let d;if(!o.edge){d=G.norm(G.sub(s,o.s));if(d<(mode==='region'?Math.max(2,o.radius+1):Math.max(5,o.radius+3))&&d<min){best=o;min=d}}}if(best)return best;for(const o of pickables){if(!o.edge)continue;const e=mesh.edges.get(o.id),a=projected.get(e.a),b=projected.get(e.b);let prev=screen(a),dist=Infinity;for(let i=1;i<=10;i++){const next=screen(G.interpolate(a,b,i/10)),v=G.sub(next,prev),w=G.sub(s,prev),t=Math.max(0,Math.min(1,(w[0]*v[0]+w[1]*v[1])/(v[0]**2+v[1]**2)));dist=Math.min(dist,G.norm(G.sub(s,G.add(prev,G.scale(v,t)))));prev=next}if(dist<(mode==='region'?2:5)&&dist<min){best=o;min=dist}}return best}
+function setStatus(s){$('status').textContent=s}
+canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;const z=diskPoint(e),handle=G.rotate([1,0],Math.PI/2+rotation);if(G.norm(G.sub(z,handle))*size.r<17){drag={rotate:true,start:Math.atan2(z[1],z[0]),camera,rotation,moved:false,meta:e.metaKey||e.ctrlKey,p:[e.clientX,e.clientY]}}else if(G.norm(z)<.985){drag={z,camera,moved:false,meta:e.metaKey||e.ctrlKey,p:[e.clientX,e.clientY]}}else return;canvas.setPointerCapture(e.pointerId);$('selection').hidden=true;active=null;$('tooltip').hidden=true});
+canvas.addEventListener('pointermove',e=>{const z=diskPoint(e);if(drag){if(Math.hypot(e.clientX-drag.p[0],e.clientY-drag.p[1])>3)drag.moved=true;if(drag.rotate){let t=Math.atan2(z[1],z[0])-drag.start;camera=compose(turn(t),drag.camera);rotation=drag.rotation+t}else if(drag.moved){let v=z;if(G.norm(v)>.97)v=G.scale(v,.97/G.norm(v));const candidate=compose(compose(shift(v),shift(G.scale(drag.z,-1))),drag.camera);const worldCenter=G.scale(G.div(candidate.B,candidate.A),-1);if(G.norm(worldCenter)<.975){camera=candidate}else setStatus('Numerical patch limit reached. Reset view or choose a larger patch.')}requestRender();return}hover=pick(z);canvas.style.cursor=G.norm(G.sub(z,G.rotate([1,0],Math.PI/2+rotation)))*size.r<17?'crosshair':hover?'pointer':'grab';if(hover){const ob=object(hover.id);setStatus(`${displayName(hover.id)} · ${ob.type} ${hover.edge?'segment · length '+ob.length.toFixed(4):'dot'}`);if(displayName(hover.id)!=='Unlabeled'){const tip=$('tooltip'),rect=canvas.getBoundingClientRect();tip.textContent=displayName(hover.id);tip.hidden=false;tip.style.left=Math.min(size.w-150,e.clientX-rect.left+15)+'px';tip.style.top=Math.max(5,e.clientY-rect.top-35)+'px'}else $('tooltip').hidden=true}else {$('tooltip').hidden=true;setStatus(mode==='region'?'Click a triangle, an edge, or a dot to add or remove its incident triangles.':'Cmd-click edges to select · click vertices to label · drag to travel')}requestRender()});
+canvas.addEventListener('pointerup',e=>{if(!drag)return;const moved=drag.moved,wasRotate=drag.rotate,meta=drag.meta;drag=null;if(moved||wasRotate){persist();return}const z=diskPoint(e);const hit=pick(z);if(pending){if(hit&&!hit.edge)chooseOrientation(hit.id);else toast('Click a highlighted outer endpoint to specify the orientation.');return}if(meta||e.metaKey||e.ctrlKey){if(hit?.edge)toggleEdge(hit.id);else toast('Cmd-click an edge segment to select it.');return}if(mode==='region'){selectRegion(z,hit);return}if(hit){if(hit.edge){const group=edgeGroup(hit.id);if(group)showGroupEditor(group);else toast('Cmd-click this segment and its partner, then choose Identify.')}else showEditor(hit.id,screen(z))}else {active=null;$('selection').hidden=true;requestRender()}});
+canvas.addEventListener('pointercancel',()=>{drag=null});canvas.addEventListener('pointerleave',()=>{if(!drag){hover=null;$('tooltip').hidden=true;requestRender()}});
+function selectRegion(z,hit){
+  if(G.norm(z)>.94)return;
+  // Inverse of the current disk isometry: hit-test in fixed mesh coordinates.
+  const world=transform(z,{A:G.conj(camera.A),B:G.scale(camera.B,-1)});
+  const triangle=hit?null:G.triangleAt(mesh,world);
+  const ids=hit?G.regionTriangles(mesh,hit.id):triangle?[triangle.id]:[];
+  if(!ids.length)return;
+  const {remove,changed}=G.toggleRegionTriangles(selected,ids);
+  updateTopology();persist();requestRender();
+  setStatus(`${remove?'Removed':'Added'} ${changed} triangle${changed===1?'':'s'} · ${selected.size} selected`);
+}
+function centerOn(id){let dot=mesh.dots.get(id);if(!dot)return;const z=transform(dot.z),start=camera,t0=performance.now();function step(now){const t=Math.min(1,(now-t0)/350),w=G.interpolate([0,0],z,t*t*(3-2*t));camera=compose(shift(G.scale(w,-1)),start);requestRender();if(t<1)requestAnimationFrame(step);else persist()}requestAnimationFrame(step)}
+function showEditor(id,s=[15,40]){active=id;const ob=object(id),pop=$('selection');pop.hidden=false;pop.style.left=Math.max(4,Math.min(size.w-260,s[0]+12))+'px';pop.style.top=Math.max(4,Math.min(size.h-185,s[1]-25))+'px';pop.innerHTML=`<p>${esc(ob.type)} ${mesh.edges.has(id)?'segment · ℓ = '+ob.length.toFixed(5):'dot'}</p><label>Hover label<input id="labelInput" type="text" maxlength="80" value="${esc(labels[id]||'')}" placeholder="Give this object a name"></label><div class="actions"><button id="saveLabel" class="active">Save label</button>${mesh.dots.has(id)?'<button id="centerDot">Center</button>':''}<button id="closeEditor">×</button></div>`;const input=$('labelInput');input.focus();input.select();function save(){const value=input.value.trim();if(value&&Object.entries(labels).some(([k,v])=>k!==id&&v===value)){toast('Another vertex already has this name.');return}if(value)labels[id]=value;else delete labels[id];pop.hidden=true;active=null;updateLists();persist();requestRender()}$('saveLabel').onclick=save;input.onkeydown=e=>{if(e.key==='Enter')save();if(e.key==='Escape')pop.hidden=true};$('closeEditor').onclick=()=>{pop.hidden=true;active=null;requestRender()};if($('centerDot'))$('centerDot').onclick=()=>{pop.hidden=true;centerOn(id)};requestRender()}
+function markHTML(i){let m=pairMark(i);return `<span style="color:${m.color}" title="Identification ${i+1}">${'❯'.repeat(m.n)}</span>`}
+function updateLists(){
+  listHover=[];
+  const query=$('search').value.toLowerCase(),direction=$('sort').value==='desc'?-1:1;
+  const sorted=items=>items.filter(x=>x.name.toLowerCase().includes(query)).sort((a,b)=>direction*a.name.localeCompare(b.name,undefined,{numeric:true}));
+  const groups=pairGroups();
+  $('edgeCount').textContent=groups.length;
+  $('vertexCount').textContent=Object.keys(labels).filter(id=>mesh.dots.has(id)).length;
+  $('identifiedList').innerHTML=sorted(groups).map(g=>`<div class="object-row" data-pair="${esc(g.id)}"><button class="object-name" data-rename="${esc(g.id)}">${esc(g.name)}</button>${markHTML(groups.findIndex(x=>x.id===g.id))}<button class="tiny" data-remove="${esc(g.id)}" title="Remove identification" aria-label="Remove ${esc(g.name)}">×</button></div>`).join('')||'<div class="empty">Cmd-click segments to select two matching straight chains.</div>';
+  $('vertexList').innerHTML=sorted(Object.entries(labels).filter(([id])=>mesh.dots.has(id)).map(([id,name])=>({id,name}))).map(v=>`<div class="object-row" data-object="${esc(v.id)}"><button class="object-name" data-edit="${esc(v.id)}">${esc(v.name)}</button><button class="tiny" data-center="${esc(v.id)}" title="Center on vertex" aria-label="Center on ${esc(v.name)}">⌾</button></div>`).join('')||'<div class="empty">Click any dot in the disk to name it for navigation.</div>';
+  document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>showEditor(b.dataset.edit));
+  document.querySelectorAll('[data-center]').forEach(b=>b.onclick=()=>centerOn(b.dataset.center));
+  document.querySelectorAll('[data-rename]').forEach(b=>b.onclick=()=>showGroupEditor(groups.find(g=>g.id===b.dataset.rename)));
+  document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{pairs=pairs.filter(p=>p.group!==b.dataset.remove);updateLists();updateTopology();persist();requestRender()});
+  updateIdentification();requestRender();
+}
+for(const listId of ['identifiedList','vertexList']){
+  const list=$(listId);
+  list.addEventListener('pointerover',e=>{
+    const row=e.target.closest('[data-object], [data-pair]');if(!row||!list.contains(row))return;
+    listHover=row.dataset.pair?groupEdges(pairGroups().find(g=>g.id===row.dataset.pair)):[row.dataset.object];requestRender();
+  });
+  list.addEventListener('pointerout',e=>{const row=e.target.closest('[data-object], [data-pair]');if(row?.contains(e.relatedTarget))return;listHover=[];requestRender()});
+}
+function showGroupEditor(group){
+  const pop=$('selection');pop.hidden=false;pop.style.left='15px';pop.style.top='40px';
+  pop.innerHTML=`<p>Identified edge pair</p><label>Shared name<input id="groupName" type="text" maxlength="80" value="${esc(group.name)}"></label><div class="actions"><button id="saveGroup" class="active">Save name</button><button id="closeEditor">×</button></div>`;
+  $('groupName').focus();$('groupName').select();
+  $('saveGroup').onclick=()=>{const name=$('groupName').value.trim();if(!validGroupName(name,group.id))return;for(const p of group.records)p.name=name;pop.hidden=true;updateLists();persist();requestRender()};
+  $('groupName').onkeydown=e=>{if(e.key==='Enter')$('saveGroup').click()};$('closeEditor').onclick=()=>{pop.hidden=true};
+}
+function validGroupName(name,except=null){if(!name){toast('Give this identified edge pair a name.');return false}if(name.length>80||pairGroups().some(g=>g.id!==except&&g.name===name)){toast('Choose a unique name for this identified edge pair.');return false}return true}
+function orientationDots(){
+  if(!pending)return [];
+  if(pending.phase==='first')return pending.sides.flatMap(s=>s.ends);
+  if(pending.phase==='second')return [...pending.sides[1].ends,pending.first];
+  return [pending.first,pending.second];
+}
+function toggleEdge(id){
+  $('objectsTab').click();
+  if(edgeSelection.has(id))edgeSelection.delete(id);
+  else {
+    if(edgeGroup(id))return toast('That segment is already identified. Remove its identification to pair it again.');
+    edgeSelection.add(id);
+  }
+  updateIdentification();requestRender();
+}
+function cancelIdentification(){pending=null;edgeSelection.clear();updateIdentification();requestRender()}
+function updateIdentification(){
+  $('cancelIdentify').hidden=!pending&&!edgeSelection.size;
+  $('identify').hidden=!!pending;
+  $('namePair').hidden=pending?.phase!=='name';
+  let message;
+  if(pending){
+    message=pending.phase==='first'?'Click an outer endpoint of either highlighted edge.':pending.phase==='second'?'Now click the matching outer endpoint of the other edge.':'Orientation set. Give this identified edge pair one shared name.';
+  }else {
+    message=edgeSelection.size?`${edgeSelection.size} segments selected. `:'Cmd-click segments in the disk. ';
+    try{const sides=G.identificationSides(mesh,[...edgeSelection]);$('identify').disabled=false;message+=`Two matching straight chains ready (${sides[0].edges.length} segments each).`}
+    catch(e){$('identify').disabled=true;message+=edgeSelection.size?e.message:'Select two straight chains with matching segment types and lengths.'}
+  }
+  $('identificationHint').textContent=message;setStatus(message);
+}
+$('identify').onclick=()=>{
+  try{pending={sides:G.identificationSides(mesh,[...edgeSelection]),phase:'first'};updateIdentification();requestRender()}
+  catch(e){toast(e.message)}
+};
+function chooseOrientation(id){
+  if(pending.phase==='name')return toast('Enter the shared name in the sidebar, or cancel to start again.');
+  if(pending.phase==='first'){
+    const i=pending.sides.findIndex(s=>s.ends.includes(id));if(i<0)return toast('Choose an outer endpoint, not an interior dot of the chain.');
+    if(i===1)pending.sides.reverse();pending.first=id;pending.phase='second';
+  }else {
+    if(!pending.sides[1].ends.includes(id))return toast('Choose an outer endpoint of the other selected edge.');
+    try{pending.records=G.orientIdentification(mesh,pending.sides,pending.first,id);pending.second=id;pending.phase='name';$('pairName').value=''}
+    catch(e){return toast(e.message)}
+  }
+  updateIdentification();requestRender();if(pending.phase==='name')$('pairName').focus();
+}
+$('cancelIdentify').onclick=cancelIdentification;
+$('savePair').onclick=()=>{
+  if(pending?.phase!=='name')return;
+  const name=$('pairName').value.trim();if(!validGroupName(name))return;
+  const group=nextGroupId();pairs.push(...pending.records.map(p=>({...p,group,name})));
+  cancelIdentification();updateLists();updateTopology();persist();requestRender();toast(`Identified as “${name}”.`);
+};
+$('pairName').onkeydown=e=>{if(e.key==='Enter')$('savePair').click();if(e.key==='Escape')cancelIdentification()};
+function updateTopology(){let r;try{r=analyze(mesh,selected,pairs)}catch(e){r={status:'invalid',message:'This project contains inconsistent cells: '+e.message}}let html=`<div class="topo-card ${r.status==='closed'&&r.smooth?'good':r.status!=='empty'?'warn':''}">${esc(r.message)}</div><div class="mini">${selected.size} selected triangles</div>`;if(r.status==='closed'){html+=`<div class="metrics">${[['Vertices',r.V],['Edges',r.E],['Triangles',r.F],['Euler χ',r.chi],['Area / π',(r.area/Math.PI).toFixed(4)],['Orientable',r.orientable?'Yes':'No']].map(([k,v])=>`<div class="metric">${k}<strong>${v}</strong></div>`).join('')}</div><div class="topo-card ${r.smooth?'good':'warn'}">${r.smooth?'Smooth hyperbolic metric: every vertex angle is 2π.':'Cone metric: some vertex angles differ from 2π. The topological surface is closed, but this metric is not smooth.'}</div><h3>Quotient vertex angles</h3><div class="angles">${r.angleSums.map((a,i)=>`v${i+1}: ${(a/Math.PI).toFixed(4)}π ${Math.abs(a-TAU)<1e-4?'✓':'· deficit '+((TAU-a)/Math.PI).toFixed(4)+'π'}`).join('<br>')}</div><p class="mini">Vertex links: single circles ✓<br>Equal-length edge gluings ✓<br>Gauss–Bonnet residual: ${Math.abs(r.gaussBonnet).toExponential(1)}<br>Cell counts use the triangle subdivision.<br>Area is measured at curvature −1.</p>`} $('topology').innerHTML=html}
+function snapshot(){return {format:'hyperbolic-studio',version:3,preset:$('tiling').value,density:+$('density').value,labels,pairs,selected:[...selected],camera,rotation,colors,visible,width:+$('width').value,radius:+$('radius').value,contrast:+$('contrast').value,radialWidth:+$('radialWidth').value}}
+function persist(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{try{localStorage.setItem('hyperbolic-studio',JSON.stringify(snapshot()))}catch{toast('Browser storage is full. Use Save to keep your work.')}},250)}
+function build(reset=true){pending=null;edgeSelection.clear();mesh=G.buildMesh($('tiling').value,+$('density').value);if(reset){labels={};pairs=[];selected=new Set();camera={A:[1,0],B:[0,0]};rotation=0}active=null;hover=null;$('selection').hidden=true;$('coverage').textContent=`${mesh.faces.length.toLocaleString()} primary polygons · ${mesh.dots.size.toLocaleString()} dots. Finite patch; fine details fade at the rim.`;updateLists();updateTopology();requestRender()}
+function migrateProject(input){
+  const s=JSON.parse(JSON.stringify(input));
+  if(s?.version===1){
+    const old=s.labels||{},names=new Set();
+    s.pairs=(s.pairs||[]).map((p,i)=>{
+      const base=old[p.e1]===old[p.e2]&&old[p.e1]?old[p.e1]:[old[p.e1],old[p.e2]].filter(Boolean).join(' ↔ ')||'Identification '+(i+1);
+      let name=base.slice(0,70),n=2;while(names.has(name))name=base.slice(0,70)+' ('+(n++)+')';names.add(name);
+      return {...p,group:'legacy'+i,name};
+    });
+    s.labels=Object.fromEntries(Object.entries(old).filter(([id])=>!id.startsWith('p:')&&!id.startsWith('d:')));s.version=2;
+  }
+  return s;
+}
+function validateProject(s){
+  if(s?.format!=='hyperbolic-studio'||![2,3].includes(s.version)||!G.presets[s.preset]||![450,1000,2500].includes(s.density))throw Error('Unsupported project format.');
+  if(!s.labels||typeof s.labels!=='object'||Array.isArray(s.labels)||!Array.isArray(s.pairs)||!Array.isArray(s.selected))throw Error('Invalid project records.');
+  const candidate=G.buildMesh(s.preset,s.density),names=new Set();
+  for(const [id,name]of Object.entries(s.labels)){
+    if(!candidate.dots.has(id)||typeof name!=='string'||!name.trim()||name.length>80||names.has(name))throw Error('Vertex names must be nonempty and unique.');names.add(name);
+  }
+  const used=new Set(),groups=new Map();
+  for(const p of s.pairs){
+    const a=candidate.edges.get(p.e1),b=candidate.edges.get(p.e2);
+    if(!a||!b||a.type!==b.type||Math.abs(a.length-b.length)>1e-5||p.e1===p.e2||used.has(p.e1)||used.has(p.e2)||![a.a,a.b].includes(p.v1)||![b.a,b.b].includes(p.v2))throw Error('Invalid oriented gluing.');
+    if(typeof p.group!=='string'||!p.group||p.group.length>100||typeof p.name!=='string'||!p.name.trim()||p.name.length>80)throw Error('Invalid identification name.');
+    if(!groups.has(p.group))groups.set(p.group,[]);groups.get(p.group).push(p);used.add(p.e1);used.add(p.e2);
+  }
+  const groupNames=new Set();
+  for(const records of groups.values()){
+    const name=records[0].name;if(records.some(p=>p.name!==name)||groupNames.has(name))throw Error('Identified edge pairs must have unique shared names.');groupNames.add(name);
+    const sides=G.identificationSides(candidate,records.flatMap(p=>[p.e1,p.e2]));
+    if(sides.some(side=>records.some(p=>side.edges.includes(p.e1)&&side.edges.includes(p.e2))))throw Error('Invalid chain grouping.');
+    const starts=sides.map(side=>side.ends.find(v=>records.some(p=>(side.edges.includes(p.e1)&&p.v1===v)||(side.edges.includes(p.e2)&&p.v2===v))));
+    if(starts.some(v=>!v))throw Error('Inconsistent chain orientation.');
+    const expected=G.orientIdentification(candidate,sides,...starts);
+    if(expected.some(e=>!records.some(p=>(p.e1===e.e1&&p.v1===e.v1&&p.e2===e.e2&&p.v2===e.v2)||(p.e2===e.e1&&p.v2===e.v1&&p.e1===e.e2&&p.v1===e.v2))))throw Error('Inconsistent chain orientation.');
+  }
+  if(s.version===2){
+    if(!['primary','dual'].includes(s.family))throw Error('Invalid legacy region family.');
+    const faceIds=new Set((s.family==='primary'?candidate.faces:candidate.dualFaces).map(f=>f.id));
+    if(s.selected.some(id=>!faceIds.has(id)))throw Error('Region contains unknown cells.');
+    s.selected=[...G.expandRegionSelection(candidate,s.selected)];s.version=3;delete s.family;
+  }else if(s.selected.some(id=>!candidate.triangleById.has(id)))throw Error('Region contains unknown triangles.');
+  if(!s.camera||![s.camera.A,s.camera.B].every(z=>Array.isArray(z)&&z.length===2&&z.every(Number.isFinite))||Math.abs(G.norm(s.camera.A)**2-G.norm(s.camera.B)**2-1)>1e-5||!Number.isFinite(s.rotation))throw Error('Invalid view transform.');
+  return candidate;
+}
+function load(input){const s=migrateProject(input),candidate=validateProject(s);$('radialWidth').value=Number.isFinite(s.radialWidth)?s.radialWidth:0.4;visible.radial=s.visible?.radial??true;colors.radial=/^#[0-9a-f]{6}$/i.test(s.colors?.radial)?s.colors.radial:'#d29570';pending=null;edgeSelection.clear();$('tiling').value=s.preset;$('density').value=s.density;mesh=candidate;labels=s.labels;pairs=s.pairs;selected=new Set(s.selected);camera=s.camera;rotation=s.rotation;for(const k of Object.keys(colors))if(/^#[0-9a-f]{6}$/i.test(s.colors?.[k]))colors[k]=s.colors[k];for(const k of Object.keys(visible))if(typeof s.visible?.[k]==='boolean')visible[k]=s.visible[k];for(const k of ['width','radius','contrast','radialWidth'])if(Number.isFinite(s[k]))$(k).value=s[k];renderLayers();active=null;hover=null;$('selection').hidden=true;updateLists();updateTopology();$('coverage').textContent=`${mesh.faces.length.toLocaleString()} primary polygons · finite numerical patch`;requestRender();persist()}
+function renderLayers(){$('layers').innerHTML=[['primary','Primary edges'],['vertex','Primary vertices'],['dual','Dual edges'],['center','Dual vertices / centers'],['crossing','Intersections'],['radial','Center-to-vertex edges'],['shading','Triangle checkerboard']].map(([k,name])=>`<div class="layer"><input type="checkbox" data-layer="${k}" aria-label="Show ${name}" ${visible[k]?'checked':''}><span>${name}</span>${k!=='shading'?`<input type="color" data-color="${k}" aria-label="${name} color" value="${colors[k]}">`:''}</div>`).join('');document.querySelectorAll('[data-layer]').forEach(x=>x.onchange=()=>{visible[x.dataset.layer]=x.checked;persist();requestRender()});document.querySelectorAll('[data-color]').forEach(x=>x.oninput=()=>{colors[x.dataset.color]=x.value;updateLists();persist();requestRender()})}
+$('tiling').innerHTML=Object.entries(G.presets).map(([id,s])=>`<option value="${id}">${s.name}</option>`).join('');$('tiling').onchange=()=>{fileHandle=null;projectFilename='hyperbolic-studio.json';$('fileName').textContent='Untitled';build();persist()};$('density').onchange=()=>{const s=snapshot();mesh=G.buildMesh(s.preset,s.density);labels=Object.fromEntries(Object.entries(labels).filter(([id])=>object(id)));const removedGroups=new Set(pairs.filter(p=>![p.e1,p.e2,p.v1,p.v2].every(id=>object(id))).map(p=>p.group));pairs=pairs.filter(p=>!removedGroups.has(p.group));pending=null;edgeSelection.clear();const valid=new Set(mesh.triangleById.keys());selected=new Set([...selected].filter(id=>valid.has(id)));updateLists();updateTopology();$('coverage').textContent=`${mesh.faces.length.toLocaleString()} primary polygons · finite numerical patch`;requestRender();persist()};
+for(const id of ['width','radius','contrast','radialWidth'])$(id).oninput=()=>{persist();requestRender()};for(const id of ['search','sort'])$(id).oninput=updateLists;
+function setMode(m){cancelIdentification();mode=m;$('fullscreenMode').value=m;$('inspect').classList.toggle('active',m==='inspect');$('region').classList.toggle('active',m==='region');$('selection').hidden=true;requestRender()}
+$('fullscreenMode').onchange=()=>setMode($('fullscreenMode').value);$('inspect').onclick=()=>setMode('inspect');$('region').onclick=()=>setMode('region');$('clearRegion').onclick=()=>{selected.clear();updateTopology();persist();requestRender()};$('home').onclick=()=>{camera={A:[1,0],B:[0,0]};rotation=0;persist();requestRender()};
+for(const [tab,panel,other,otherPanel]of [['objectsTab','objectsPanel','topologyTab','topologyPanel'],['topologyTab','topologyPanel','objectsTab','objectsPanel']])$(tab).onclick=()=>{$(tab).classList.add('active');$(other).classList.remove('active');$(panel).hidden=false;$(otherPanel).hidden=true};
+$('help').onclick=()=>$('guide').showModal();$('closeGuide').onclick=()=>$('guide').close();
+let fileHandle=null,projectFilename='hyperbolic-studio.json',saving=false,expanded=false;
+function setProjectFile(handle,name){fileHandle=handle;projectFilename=name||'hyperbolic-studio.json';$('fileName').textContent=projectFilename}
+function downloadProject(name){
+  const blob=new Blob([JSON.stringify(snapshot(),null,2)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  setProjectFile(null,name);toast('Downloaded '+name+'. Your browser controls replacement of existing files.');
+}
+async function saveProject(asNew=false){
+  if(saving)return;
+  if(!window.showSaveFilePicker&&!fileHandle){
+    if(asNew||$('fileName').textContent==='Untitled'){$('saveFilename').value=projectFilename;$('saveDialog').showModal();$('saveFilename').focus();$('saveFilename').select()}
+    else downloadProject(projectFilename);
+    return;
+  }
+  saving=true;$('export').disabled=true;$('saveAs').disabled=true;
+  try{
+    const handle=asNew||!fileHandle?await window.showSaveFilePicker({suggestedName:projectFilename,types:[{description:'Hyperbolic Studio project',accept:{'application/json':['.json']}}]}):fileHandle;
+    const stream=await handle.createWritable();
+    try{await stream.write(JSON.stringify(snapshot(),null,2));await stream.close()}catch(error){try{await stream.abort()}catch{}throw error}
+    setProjectFile(handle,handle.name);toast('Saved '+projectFilename+'.');
+  }catch(error){if(error.name!=='AbortError')toast('Could not save: '+error.message+' Try Save As to choose another file.')}
+  finally{saving=false;$('export').disabled=false;$('saveAs').disabled=false}
+}
+$('export').onclick=()=>saveProject();$('saveAs').onclick=()=>saveProject(true);
+$('confirmSave').onclick=()=>{let name=$('saveFilename').value.trim().replace(/[\\/:*?"<>|]/g,'-');if(!name){toast('Enter a filename.');return}if(!/\.json$/i.test(name))name+='.json';downloadProject(name);$('saveDialog').close()};
+$('cancelSave').onclick=()=>$('saveDialog').close();$('saveFilename').onkeydown=e=>{if(e.key==='Enter')$('confirmSave').click()};
+async function readProjectFile(f,handle=null){if(f.size>5e6)throw Error('Project file is too large.');load(JSON.parse(await f.text()));setProjectFile(handle,f.name);toast('Project opened.')}
+$('import').onclick=async()=>{
+  if(!window.showOpenFilePicker){$('file').click();return}
+  try{const [handle]=await window.showOpenFilePicker({multiple:false,types:[{description:'Hyperbolic Studio project',accept:{'application/json':['.json']}}]});await readProjectFile(await handle.getFile(),handle)}catch(error){if(error.name!=='AbortError')toast('Could not open project: '+error.message)}
+};
+$('file').onchange=async()=>{const f=$('file').files[0];if(!f)return;try{await readProjectFile(f)}catch(e){toast('Could not open project: '+e.message)}$('file').value=''};
+function setExpanded(value){expanded=value;$('fullscreenMode').value=mode;$('workspace').classList.toggle('expanded',value);$('studioLayout').classList.toggle('expanded-layout',value);$('fullscreen').textContent=value?'Exit fullscreen':'Fullscreen';resize()}
+function fullscreenElement(){return document.fullscreenElement||document.webkitFullscreenElement}
+async function toggleFullscreen(){
+  if(expanded){try{if(fullscreenElement()){const exit=document.exitFullscreen||document.webkitExitFullscreen;await exit.call(document)}}catch{}setExpanded(false);return}
+  setExpanded(true);
+  const target=document.documentElement,enter=target?.requestFullscreen||target?.webkitRequestFullscreen;
+  if(enter)try{await enter.call(target)}catch{toast('Expanded disk view. Browser fullscreen is unavailable.')}
+}
+$('fullscreen').onclick=toggleFullscreen;
+for(const event of ['fullscreenchange','webkitfullscreenchange'])document.addEventListener(event,()=>setExpanded(!!fullscreenElement()));
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveProject(e.shiftKey);return}
+  if(e.key==='Escape'){if(expanded)toggleFullscreen();cancelIdentification();$('selection').hidden=true;active=null;requestRender()}
+});
+$('demo').onclick=()=>{
+  fileHandle=null;projectFilename='hyperbolic-studio.json';$('fileName').textContent='Untitled';
+  $('tiling').value='bolza';build();const f=mesh.faces.find(f=>G.norm(mesh.dots.get(f.c).z)<1e-7);selected=new Set(G.regionTriangles(mesh,f.c));
+  for(let i=0;i<f.vertices.length;i++)labels[f.vertices[i]]=i%2?'m'+((i+1)/2):'v'+(i/2+1);
+  for(let i=0;i<4;i++){
+    const sides=G.identificationSides(mesh,[f.edges[2*i],f.edges[2*i+1],f.edges[2*i+8],f.edges[2*i+9]]);
+    const records=G.orientIdentification(mesh,sides,f.vertices[2*i],f.vertices[(2*i+10)%16]);
+    pairs.push(...records.map(p=>({...p,group:'g'+(i+1),name:['a','b','c','d'][i]})));
+  }
+  updateLists();updateTopology();$('topologyTab').click();persist();requestRender();toast('Genus 2: four complete edge pairs, area 4π.');
+};
+$('macbeath').onclick=()=>{
+  try{
+    const candidate=G.buildMesh('hept',1000),example=G.macbeathExample(candidate),report=analyze(candidate,example.selected,example.pairs);
+    if(report.status!=='closed'||report.chi!==-12||!report.orientable||!report.smooth||report.components!==1)throw Error('Macbeath verification failed.');
+    load({...snapshot(),preset:'hept',density:1000,labels:{},pairs:example.pairs,selected:[...example.selected],camera:{A:[1,0],B:[0,0]},rotation:0});
+    fileHandle=null;projectFilename='macbeath-genus-7.json';$('fileName').textContent='Untitled';
+    $('topologyTab').click();toast('Macbeath genus 7: 72 heptagons, 97 boundary-edge pairs, area 24π.');
+  }catch(error){toast('Could not load Macbeath example: '+error.message)}
+};
+renderLayers();build();try{const saved=localStorage.getItem('hyperbolic-studio');if(saved)load(JSON.parse(saved))}catch(e){toast('Saved project could not be restored: '+e.message)}new ResizeObserver(resize).observe($('canvasWrap'));resize();render();
+// Expose read-only diagnostics for local verification.
+window.hyperbolicDiagnostics=()=>({mesh:{faces:mesh.faces.length,dualFaces:mesh.dualFaces.length,dots:mesh.dots.size,edges:mesh.edges.size,triangles:mesh.triangles.length},topology:analyze(mesh,selected,pairs),project:snapshot(),pickables:pickables.length,edgeSelection:[...edgeSelection],orientation:pending?{phase:pending.phase,candidates:orientationDots()}:null,highlights:[...listHover],groups:pairGroups()});
+
+})();</script></body></html>
